@@ -2,7 +2,7 @@ import "./Navbar.css";
 import Link from "./Link";
 
 function Navbar() {
-    const x = 3;
+    const x = 10;
     const img = "vite";
     const imgReact = "src/assets/react";
     const imgStyle = {
@@ -22,6 +22,8 @@ function Navbar() {
         <img className="rounded-image" src={`/${imgReact}.svg`} alt="react logo" />
         {/* dinamic class */}
         <div className={`box rounded ${x < 10 ? "rotated" : "" }`} >Dinamic-class x è {x}</div>
+        {/* tailwind */}
+        <div className={ `rounded-lg w-72 h-72  ${x < 10 ? "bg-red-500 rotate-45" : "bg-sky-500"} `}>Tailwind class</div>
 
 
         <ul>
