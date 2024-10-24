@@ -2,7 +2,7 @@ import "./Navbar.css";
 import Link from "./Link";
 
 function Navbar() {
-    const x = 10;
+    const x = 9;
     const img = "vite";
     const imgReact = "src/assets/react";
     const imgStyle = {
