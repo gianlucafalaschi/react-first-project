@@ -5,6 +5,21 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Card from './components/card'
 
+function handleClick(){
+  alert("sono la funzione handleClick");
+}
+/* e is the event
+target è l'elemento su cui è avvenuto l'evento, come un input di testo. 
+value è la proprietà che contiene il valore corrente dell'elemento dell'input.*/
+function handleChange(e){
+  console.log(e.target.value);
+}
+
+function handleSubmit(e){
+  e.preventDefault();
+  console.log(e);
+}
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -105,12 +120,22 @@ function App() {
       </div>
       
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+          <button onClick={() => setCount((count) => count + 1)}>
+            count is {count}
+          </button>
+          <button onClick={() => alert("ciao, sono una arrow function")}>
+            Arrow Function Alert
+          </button>
+          <button onClick={handleClick}>
+            Normal Function Alert
+          </button>
+          <input type="text" onChange={handleChange} />
+          {/* with the function handleSubmit I want to prevent the standard
+          behaviour of the submit button (the page refresh) because this is a 
+          single page application  */}
+          <form onSubmit={handleSubmit} >
+            <button type='submit'>Submit Form</button>
+          </form>
       </div>
       
     </>
