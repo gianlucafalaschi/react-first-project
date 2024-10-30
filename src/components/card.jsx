@@ -7,7 +7,7 @@ function Card(props) {
 */
 
 /* A cleaner way to pass the Props */ /* Note: with "children" I only pass the props inside <Card>I pass this</Card>, in this case the text lorem ipsum  */
-function Card({title, imgUrl, isVisited, children}) {
+function Card({title, imgUrl, isVisited,counter, children}) {
     
     return(
         <div className="rounded-md overflow-hidden bg-zinc-950">
@@ -17,7 +17,8 @@ function Card({title, imgUrl, isVisited, children}) {
                 <p className="text-gray-500">
                     {children}
                 </p>
-                {/* CONDITIONAL RENDERING */}
+                <div>{counter}</div> {/* Passo lo STATE del count */}
+                {/* CONDITIONAL */}
                 {/* ternary operator, show whether the city is visited or not */}
                 {/* {isVisited ?<span><i className="fa-solid fa-check"></i> visited</span> : <span><i className="fa-solid fa-xmark"></i> not visited</span> } */}
                 {/* another option for conditional rendering instead of ternary operator */}

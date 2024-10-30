@@ -22,7 +22,38 @@ function handleSubmit(e){
 
 
 function App() {
-  const [count, setCount] = useState(0);
+  /* STATES */
+  /* count e' la variabile che rappresenta lo stato corrente (valore impostato a 0, setCount e' la funzione per settarlo. useState e'un hook di react, un array di 2 elementi: - [0, ƒ]  valore di count e la funzione setCount)  */
+  const [count, setCount] = useState(0); 
+  /* a State can be also an array */
+  const [items, setItems] = useState([1,2,3]);
+  /* a State can be an object  */
+  const [user, setUser] = useState({ name: "Alice", age: 30 });
+
+  console.log(items);
+  console.log(user);
+
+  /* arrow function to add new items */
+  const addItem = () =>{
+    const newItem = 4;
+    setItems([...items, newItem])    /* ...items is the spread operator */
+  };
+  console.log(items);
+
+  /* Arrow function che sostituisce aggiorna lo user  */
+  const updateUserName = () => {
+    const updateUser = { ...user, name: "Bob"};
+    setUser(updateUser);
+    console.log(user);
+  };
+
+
+
+  /* se invece dello state usassi una normale variabile per il count rimarrebbe sempre a 0, perchè la function App() verrebbe fatta ripartire ogni volta che premo il pulsante, ripartendo da 0  */
+  let conteggio = 0;
+
+
+
   const cities = [
     {
       id: 0,
@@ -94,7 +125,8 @@ function App() {
             key={city.id}
             title={city.title}
             isVisited={city.isVisited}
-            imgUrl={city.imgUrl}>
+            imgUrl={city.imgUrl}
+            counter={count}>     {/* Posso passare lo STATE del count  */}
             {city.description}
           </Card>
         ))}
@@ -123,6 +155,20 @@ function App() {
           <button onClick={() => setCount((count) => count + 1)}>
             count is {count}
           </button>
+          {/* dimostrazione che senza STATE il conteggio non verrebbe aggiornato, anche se nel console.log funziona */}
+          <button onClick={function conteggioIncreased(){console.log(conteggio++)}}>
+            conteggio is {conteggio}
+          </button>
+          
+          {/* Add Items function */}
+          <button onClick={ addItem }>
+            add Item
+          </button>
+          {/* Update user function */}
+          <button onClick={ updateUserName }>
+            update user
+          </button>
+
           <button onClick={() => alert("ciao, sono una arrow function")}>
             Arrow Function Alert
           </button>
