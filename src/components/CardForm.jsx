@@ -2,6 +2,7 @@
 /* I need to send the data from the children element (Card Form) to the parents,
 something similar to a contrary Props  */
 
+/* I pass addCity as a props */
 function CardForm({addCity}) {
 
     function handleClick(){

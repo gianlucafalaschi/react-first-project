@@ -5,6 +5,8 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Card from './components/Card'
 import CardForm from './components/CardForm'
+import TestTailwind from './components/TestTailwind'
+
 
 function handleClick(){
   alert("sono la funzione handleClick");
@@ -237,6 +239,8 @@ function App() {
             <button type='submit'>Submit Form</button>
           </form>
       </div>
+      {/* Component TestTailwind */}
+      <TestTailwind></TestTailwind>
       
     </>
   )
