@@ -3,7 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './components/Navbar'
-import Card from './components/card'
+import Card from './components/Card'
+import CardForm from './components/CardForm'
 
 function handleClick(){
   alert("sono la funzione handleClick");
@@ -30,8 +31,8 @@ function App() {
   /* a State can be an object  */
   const [user, setUser] = useState({ name: "Alice", age: 30 });
 
-  console.log(items);
-  console.log(user);
+ /*  console.log(items);
+  console.log(user); */
 
   /* arrow function to add new items */
   const addItem = () =>{
@@ -48,29 +49,27 @@ function App() {
   };
 
 
-
   /* se invece dello state usassi una normale variabile per il count rimarrebbe sempre a 0, perchè la function App() verrebbe fatta ripartire ogni volta che premo il pulsante, ripartendo da 0  */
   let conteggio = 0;
 
-
-
-  const cities = [
+  
+  /*   const cities = [
     {
       id: 0,
       title: "Tokyo",
       description: 
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem deleniti omnis, sint, aliquam officia iusto fugit, earum saepe ullam placeat minus accusamus. Cupiditate sint officia qui ea, reiciendis ad molestias.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem deleniti omnis, sint, aliquam officia iusto fugit, earum saepe ullam placeat minus accusamus. Cupiditate sint officia qui ea, reiciendis ad molestias.",
       imgUrl: 
-        "https://images.unsplash.com/photo-1633632860411-364d4dc29309?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1633632860411-364d4dc29309?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       isVisited: true,  
     },
     {
       id: 1,
       title: "New York",
       description: 
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et eligendi reprehenderit quibusdam nulla odio ullam commodi! Aliquid consequatur, officiis, saepe voluptatibus officia provident voluptates dignissimos ullam rerum excepturi ipsa enim?",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et eligendi reprehenderit quibusdam nulla odio ullam commodi! Aliquid consequatur, officiis, saepe voluptatibus officia provident voluptates dignissimos ullam rerum excepturi ipsa enim?",
       imgUrl: 
-        "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       isVisited: false,  
     },
     {
@@ -86,15 +85,70 @@ function App() {
       id: 3,
       title: "Paris",
       description: 
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem deleniti omnis, sint, aliquam officia iusto fugit, earum saepe ullam placeat minus accusamus. Cupiditate sint officia qui ea, reiciendis ad molestias.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem deleniti omnis, sint, aliquam officia iusto fugit, earum saepe ullam placeat minus accusamus. Cupiditate sint officia qui ea, reiciendis ad molestias.",
       imgUrl: 
-        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       isVisited: false,  
     },
-  ];
+  ]; */
+  
+  /* In order to use the component CardForm to add a new city with a form,
+  a need to transform the array of object (above) with all the city into a State  */
+  
+  const [cities, setCities] = useState([
+    {
+      id: 0,
+        title: "Tokyo",
+        description: 
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem deleniti omnis, sint, aliquam officia iusto fugit, earum saepe ullam placeat minus accusamus. Cupiditate sint officia qui ea, reiciendis ad molestias.",
+        imgUrl: 
+          "https://images.unsplash.com/photo-1633632860411-364d4dc29309?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        isVisited: true,  
+      },
+      {
+        id: 1,
+        title: "New York",
+        description: 
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et eligendi reprehenderit quibusdam nulla odio ullam commodi! Aliquid consequatur, officiis, saepe voluptatibus officia provident voluptates dignissimos ullam rerum excepturi ipsa enim?",
+        imgUrl: 
+          "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        isVisited: false,  
+      },
+      {
+        id: 2,
+        title: "Rome",
+        description: 
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem deleniti omnis, sint, aliquam officia iusto fugit, earum saepe ullam placeat minus accusamus. Cupiditate sint officia qui ea, reiciendis ad molestias.",
+        imgUrl: 
+          "https://images.unsplash.com/photo-1529154036614-a60975f5c760?q=80&w=876&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        isVisited: true,  
+      },
+      {
+        id: 3,
+        title: "Paris",
+        description: 
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem deleniti omnis, sint, aliquam officia iusto fugit, earum saepe ullam placeat minus accusamus. Cupiditate sint officia qui ea, reiciendis ad molestias.",
+        imgUrl: 
+          "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        isVisited: false,  
+      },
+    ]); 
+
+     /* arrow function to add new card */
+    /* const addCity = (newCity) => {
+    setCities([...cities, newCity]);
+    }; 
+    OR */
+    /*normal  function to add new card  */
+    function addCity(newCity){
+      setCities([...cities, newCity]);
+    }
+
 
   return (
     <>
+      {/* Component with a form to add a new city, I pass the function addCity as a props */}
+      <CardForm addCity={addCity}></CardForm>  
       {/* <Navbar></Navbar> */}
       <div className='grid grid-cols-4 gap-5'>
         {/* To print this city I took the data above but it is not a good way to work, because I don't know how many city are there, better use the List Rendering */}
