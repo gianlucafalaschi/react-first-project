@@ -20,7 +20,17 @@ function TestTailwind() {
                 <li>3</li>
             </ul>
             <p className="text-left text-slate-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, fugiat cumque! Assumenda repellendus quasi autem labore molestiae, incidunt, recusandae dignissimos iure amet sed reprehenderit libero harum corrupti. Obcaecati, perspiciatis alias.</p>
+
+            <div className="bg-slate-500 w-[300px] h-[300px] ml-10 p-[10px]">
+                <div className="flex space-x-3">
+                    <div className="bg-pink-500">1</div>
+                    <div className="bg-pink-500">2</div>
+                    <div className="bg-pink-500">3</div>
+                    <div className="bg-pink-500">4</div>
+                </div>
+            </div>
         </section>
+        
 
     )
 }
