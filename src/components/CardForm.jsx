@@ -34,6 +34,14 @@ function CardForm({ addCity }) {
             imgUrl: formData.imgUrl,
             isVisited: formData.isVisited,
         };
+        /* When I add the city I reset the State to the original status */
+        setFormData({
+            title: "",
+            description: "",
+            imgUrl: "",
+            isVisited: false,
+        });
+
         addCity(newCity);
     };
 
