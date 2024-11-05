@@ -6,7 +6,7 @@ import Navbar from './components/Navbar'
 import Card from './components/Card'
 import CardForm from './components/CardForm'
 import TestTailwind from './components/TestTailwind'
-
+import Example from './components/Example'
 
 function handleClick(){
   alert("sono la funzione handleClick");
@@ -149,6 +149,7 @@ function App() {
 
   return (
     <>
+      <Example cities={cities}></Example>
       {/* Component with a form to add a new city, I pass the function addCity as a props */}
       <CardForm addCity={addCity}></CardForm>  
       {/* <Navbar></Navbar> */}
