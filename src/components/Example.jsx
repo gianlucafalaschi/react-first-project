@@ -32,11 +32,11 @@ function Example(cities) {
         };
      */
 
-    
-    
+
+
     /* With useEffect */
 
-    function handleClick(){
+    function handleClick() {
         setCount(count + 1);
     };
 
@@ -44,7 +44,7 @@ function Example(cities) {
     useEffect(() => {
         document.title = `Conteggio: ${count}`;
         console.log('Ciao da useEffect');
-    }, [count, cities]);
+    }, [count]);
 
     return (
         <div>

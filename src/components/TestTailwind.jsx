@@ -29,6 +29,9 @@ function TestTailwind() {
                     <div className="bg-pink-500">4</div>
                 </div>
             </div>
+            <div className="bg-red-500 w-auto max-w-screen-lg min-h-32 ">
+                <h1>Ciao</h1>
+            </div>
         </section>
         
 
