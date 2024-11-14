@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useReducer } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -23,6 +23,18 @@ function handleSubmit(e) {
   console.log(e);
 }
 
+/* function for useReducer,   in this case "state" is {name: "", email: ""} and "action" is "dispatchFormState"  */
+function formReducer(state, action) {
+  switch (action.type) {
+    case "CHANGE_FIELD":
+      return { ...state, [action.field]: action.value }
+    case "RESET_FORM":
+      return { name: "", email: "" };
+    /* in case we send an unknown action  */
+    default:
+      return state;
+  }
+}
 
 function App() {
   /* STATES */
@@ -34,6 +46,9 @@ function App() {
   const [user, setUser] = useState({ name: "Alice", age: 30 });
   /* State per la chiamata http in useEffect */
   const [data, setData] = useState([]);
+
+  /*useReducer per il form / dispacth emana un'azione da rilasciare sul formState    */
+  const [formState, dispatchFormState] = useReducer(formReducer, { name: "", email: "" });
 
   /*  console.log(items);
    console.log(user); */
@@ -55,6 +70,20 @@ function App() {
   /* se invece dello state usassi una normale variabile per il count rimarrebbe sempre a 0, perchè la function App() verrebbe fatta ripartire ogni volta che premo il pulsante, ripartendo da 0  */
   let conteggio = 0;
 
+  /* Funzioni per useReducer */
+  const handleFieldChange = (field, value) => {
+    dispatchFormState({ type: "CHANGE_FIELD", field, value });
+  };
+
+  const resetForm = (e) => {
+    e.preventDefault();
+    dispatchFormState({ type: "RESET_FORM" });
+  };
+  const sendForm = (e) => {
+    e.preventDefault();
+    console.log(formState);
+  };
+  /*  */
 
   useEffect(() => {
     // document.title = `Conteggio: ${count}`;
@@ -155,8 +184,8 @@ function App() {
   function addCity(newCity) {
     setCities([...cities, newCity]);
   }
-  
-  
+
+
   return (
     <>
       <Example cities={cities}></Example>
@@ -176,45 +205,45 @@ function App() {
         elements in the array -  Remember to add the key id  when use the map  */ }
         {cities.map((city) => (
           <Card
-          key={city.id}
-          title={city.title}
-          isVisited={city.isVisited}
-          imgUrl={city.imgUrl}>
+            key={city.id}
+            title={city.title}
+            isVisited={city.isVisited}
+            imgUrl={city.imgUrl}>
             {city.description}
           </Card>
         ))}
-        </div>
-        {/* LIST RENDERING WITH FILTER */}
-        <div className='grid grid-cols-4 gap-5 mb-3'>
-          <div>LIST RENDERING WITH FILTER</div>
-          {cities
-            .filter((city) => !city.isVisited)
-            .map((city) => (
-              <Card
-                key={city.id}
-                title={city.title}
-                isVisited={city.isVisited}
-                imgUrl={city.imgUrl}
-                counter={count}>     {/* Posso passare lo STATE del count  */}
-                {city.description}
-              </Card>
-            ))}
-        </div>
-        
-        {/* Data from HTTP call */}
-        <div>
-          <div className='grid grid-cols-4 gap-5'>
-            {data.map((item) => (
-              <div key={item.id} className=' bg-slate-400 rounded-lg p-3'>
-                <p className='text-blue-950 mb-3'>User Id: {item.userId}</p>
-                <h2 className='text-xl mb-3'>{item.title}</h2>
-                <p className='text-gray-800'>{item.body}</p>
-              </div>
+      </div>
+      {/* LIST RENDERING WITH FILTER */}
+      <div className='grid grid-cols-4 gap-5 mb-3'>
+        <div>LIST RENDERING WITH FILTER</div>
+        {cities
+          .filter((city) => !city.isVisited)
+          .map((city) => (
+            <Card
+              key={city.id}
+              title={city.title}
+              isVisited={city.isVisited}
+              imgUrl={city.imgUrl}
+              counter={count}>     {/* Posso passare lo STATE del count  */}
+              {city.description}
+            </Card>
           ))}
-          </div>
-        </div>
+      </div>
 
-        {/* <Card
+      {/* Data from HTTP call */}
+      <div>
+        <div className='grid grid-cols-4 gap-5'>
+          {data.map((item) => (
+            <div key={item.id} className=' bg-slate-400 rounded-lg p-3'>
+              <p className='text-blue-950 mb-3'>User Id: {item.userId}</p>
+              <h2 className='text-xl mb-3'>{item.title}</h2>
+              <p className='text-gray-800'>{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* <Card
           isVisited={false} 
           title="New York" 
           imgUrl="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
@@ -268,6 +297,31 @@ function App() {
       {/* Component TestTailwind */}
       {/* <TestTailwind></TestTailwind> */}
 
+      {/* Form created with the purpose of using useReducer */}
+      <form>
+        <div>
+          <label htmlFor="name">Nome:</label>
+          <input
+            type="text"
+            id="name"
+            name='name'
+            value={formState.name}
+            onChange={(e) => handleFieldChange("name", e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formState.email}
+            onChange={(e) => handleFieldChange("email", e.target.value)}
+          />
+        </div>
+        <button onClick={resetForm}>Reset</button>
+        <button onClick={sendForm}>Invia</button>
+      </form>
     </>
   )
 }
