@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer } from 'react'
+import { useState, useEffect, useReducer, useContext } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -7,6 +7,7 @@ import Card from './components/Card'
 import CardForm from './components/CardForm'
 import TestTailwind from './components/TestTailwind'
 import Example from './components/Example'
+import { ProvaContext } from './stores/ProvaContext'
 
 function handleClick() {
   alert("sono la funzione handleClick");
@@ -187,7 +188,7 @@ function App() {
 
 
   return (
-    <>
+    <ProvaContext.Provider value={{count, setCount}}> {/* here I create Provider for Context Api */}
       <Example cities={cities}></Example>
       {/* Component with a form to add a new city, I pass the function addCity as a props */}
       <CardForm addCity={addCity}></CardForm>
@@ -322,7 +323,7 @@ function App() {
         <button onClick={resetForm}>Reset</button>
         <button onClick={sendForm}>Invia</button>
       </form>
-    </>
+    </ProvaContext.Provider>
   )
 }
 

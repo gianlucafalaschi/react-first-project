@@ -1,5 +1,5 @@
-import { useState } from "react";   /* I want to use the state for the form, so I import the useState */
-
+import { useState, useContext } from "react";   /* I want to use the state for the form, so I import the useState */
+import { ProvaContext } from "../stores/ProvaContext";
 
 /* I need to send the data from the children element (Card Form) to the parents,
 something similar to a contrary Props  */
@@ -45,6 +45,8 @@ function CardForm({ addCity }) {
         addCity(newCity);
     };
 
+    const { count } = useContext(ProvaContext);
+
     return (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-80 mb-10 bg-zinc-900 p-5 rounded-lg">
             <div className="flex flex-col">
@@ -52,7 +54,7 @@ function CardForm({ addCity }) {
                 <input className="bg-zinc-600" type="text" name="title" value={formData.title} onChange={handleInputChange}  />
             </div>
             <div className="flex flex-col">
-                <label>Description</label>
+                <label>Description { count }</label>
                 <textarea className="bg-zinc-600" name="description" value={formData.description} onChange={handleInputChange}  ></textarea>
             </div>
             <div className="flex flex-col">
