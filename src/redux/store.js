@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {counterReducer} from '/counterSlice';
+import {counterReducer} from './counterSlice';
 import {citiesReducer} from './citiesSlice';
 
 // Creating and exporting the Redux store configuration
