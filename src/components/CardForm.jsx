@@ -1,12 +1,13 @@
-import { useState, useContext } from "react";   /* I want to use the state for the form, so I import the useState */
-import { ProvaContext } from "../stores/ProvaContext";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { add } from "../redux/citiesSlice";
 
-/* I need to send the data from the children element (Card Form) to the parents,
-something similar to a contrary Props  */
 
-/* I pass addCity as a props */
-function CardForm({ addCity }) {
+
+
+function CardForm() {
     /*I create the initial State of the form */
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -42,10 +43,9 @@ function CardForm({ addCity }) {
             isVisited: false,
         });
 
-        addCity(newCity);
+        dispatch(add(newCity));
     };
 
-    const { count } = useContext(ProvaContext);
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-80 mb-10 bg-zinc-900 p-5 rounded-lg">
@@ -54,7 +54,7 @@ function CardForm({ addCity }) {
                 <input className="bg-zinc-600" type="text" name="title" value={formData.title} onChange={handleInputChange}  />
             </div>
             <div className="flex flex-col">
-                <label>Description { count }</label>
+                <label>Description</label>
                 <textarea className="bg-zinc-600" name="description" value={formData.description} onChange={handleInputChange}  ></textarea>
             </div>
             <div className="flex flex-col">
