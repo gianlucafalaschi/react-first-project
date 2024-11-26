@@ -6,7 +6,7 @@ import { add } from "../redux/citiesSlice";
 
 
 function CardForm() {
-    /*I create the initial State of the form */
+    /* Create the initial State of the form */
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         title: "",
@@ -14,13 +14,13 @@ function CardForm() {
         imgUrl: "",
         isVisited: false,
     });
-
+    // Handle input changes for all form fields
     function handleInputChange(e) {
         const {name, value, type, checked } = e.target;
         const inputValue = type == "checkbox" ? checked : value;
         setFormData({
-            ...formData, 
-            [name] : inputValue,
+            ...formData,  // Keep the existing form data
+            [name] : inputValue, // Update only the specific field
         });
     };
 
@@ -29,20 +29,21 @@ function CardForm() {
     function handleSubmit(e) {   
         e.preventDefault();
         const newCity = {
-            id: Math.random(),
+            id: Math.random(), // Generate a random ID for the new city
             title: formData.title,
             description: formData.description,
             imgUrl: formData.imgUrl,
             isVisited: formData.isVisited,
         };
-        /* When I add the city I reset the State to the original status */
+        
+        // Reset the form state to its initial values
         setFormData({
             title: "",
             description: "",
             imgUrl: "",
             isVisited: false,
         });
-
+        // Dispatch the add action to add the new city to the Redux store
         dispatch(add(newCity));
     };
 
