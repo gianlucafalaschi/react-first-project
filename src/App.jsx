@@ -1,5 +1,6 @@
 import './App.css'
 import Navbar from './components/Navbar'
+import NewNavbar from './components/NewNavabar'
 import Card from './components/Card'
 import CardForm from './components/CardForm'
 import TestTailwind from './components/TestTailwind'
@@ -10,12 +11,14 @@ import { useSelector } from 'react-redux'
 
 
 
+
 function App() {
   // Accessing the cities state from the Redux store
   const cities = useSelector((state) => state.cities.value);
 
   return (
     <> 
+      <NewNavbar></NewNavbar>
       <Example></Example>
       <CardForm></CardForm>
       {/* <Navbar></Navbar> */}
