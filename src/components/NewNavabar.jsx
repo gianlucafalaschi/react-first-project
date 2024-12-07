@@ -7,9 +7,11 @@ function NewNavbar() {
                 <Link to={'/'}>Home</Link>
             </li>
             <li>
-                <Link to={'/contacts'}>Contatti</Link>
+                <Link to={'/contacts'}>Contact</Link>
             </li>
-            <li>About</li>
+            <li>
+                <Link to={'/about'}>About</Link>
+            </li>
             <li>Card version 1</li>
             <li>Card version 2</li>
         </ul>
