@@ -12,7 +12,9 @@ function NewNavbar() {
             <li>
                 <Link to={'/about'}>About</Link>
             </li>
-            <li>Card version 1</li>
+            <li>
+                <Link to={'/cards'}>Cards List</Link>
+            </li>
             <li>Card version 2</li>
         </ul>
     );

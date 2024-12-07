@@ -17,12 +17,12 @@ function App() {
   const cities = useSelector((state) => state.cities.value);
 
   return (
-    <> 
+    <>
       <NewNavbar></NewNavbar>
       <Example></Example>
       <CardForm></CardForm>
       {/* <Navbar></Navbar> */}
-      <div className='grid grid-cols-4 gap-5 mb-3'>        
+      <div className='grid grid-cols-4 gap-5 mb-3'>
         {/* LIST RENDERING - Using array.map to iterate over 
         each city and render a Card component for each 
         -  Remember to add the key id  when use the map  */ }
