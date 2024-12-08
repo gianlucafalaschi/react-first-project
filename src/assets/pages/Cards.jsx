@@ -3,6 +3,7 @@ import Card from "../../components/Card";
 // Importing the useSelector hook from React Redux to access the Redux store state
 import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom"; // Importing the Link component for navigation
+import { Outlet } from "react-router-dom";
 
 function Cards() {
     // Accessing the cities state from the Redux store
@@ -11,7 +12,7 @@ function Cards() {
     return (
         <>
             <NewNavbar></NewNavbar>
-            <h1 className="text-3xl font-bold mb-4">Cards page</h1>
+            <h1 className="text-3xl font-bold mb-10">Cards page</h1>
 
             <div className='grid grid-cols-4 gap-5 mb-3'>
                 {/* LIST RENDERING - Using array.map to iterate over 

@@ -38,7 +38,13 @@ const router = createBrowserRouter([
   },
   {
     path: "cards-children",
-    element: <CardsChildren></CardsChildren>
+    element: <CardsChildren></CardsChildren>,
+    children: [
+      {
+        path: ":cardID",
+        element: <SingleCard/>
+      }
+    ],
   }
 ]);
 
