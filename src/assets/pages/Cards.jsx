@@ -1,4 +1,4 @@
-import NewNavbar from "../../components/NewNavabar";
+import NewNavbar from "../../components/NewNavbar";
 import Card from "../../components/Card";
 // Importing the useSelector hook from React Redux to access the Redux store state
 import { useSelector } from 'react-redux';

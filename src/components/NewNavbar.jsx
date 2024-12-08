@@ -15,7 +15,9 @@ function NewNavbar() {
             <li>
                 <Link to={'/cards'}>Cards List</Link>
             </li>
-            <li>Card version 2</li>
+            <li>
+                <Link to={'/cards-children'}>Cards List vr2</Link>
+            </li>
         </ul>
     );
 }

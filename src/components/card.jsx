@@ -22,8 +22,8 @@ function Card({title, imgUrl, isVisited,counter, children}) {
                 {/* ternary operator, show whether the city is visited or not */}
                 {/* {isVisited ?<span><i className="fa-solid fa-check"></i> visited</span> : <span><i className="fa-solid fa-xmark"></i> not visited</span> } */}
                 {/* another option for conditional rendering instead of ternary operator */}
-                {isVisited && <span><i className="fa-solid fa-check"></i> visited</span>}
-                {!isVisited && <span><i className="fa-solid fa-xmark"></i> not visited</span>}
+                {isVisited && <span className="text-green-500"><i className="fa-solid fa-check"></i> visited</span>}
+                {!isVisited && <span className="text-red-500"><i className="fa-solid fa-xmark"></i> not visited</span>}
             </div>
         </div>
     )

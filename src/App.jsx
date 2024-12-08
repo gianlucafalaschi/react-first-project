@@ -1,6 +1,6 @@
 import './App.css'
 import Navbar from './components/Navbar'
-import NewNavbar from './components/NewNavabar'
+import NewNavbar from './components/NewNavbar'
 import Card from './components/Card'
 import CardForm from './components/CardForm'
 import TestTailwind from './components/TestTailwind'

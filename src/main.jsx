@@ -7,6 +7,7 @@ import Contacts from './assets/pages/Contacts.jsx'
 import About from './assets/pages/About.jsx'
 import Cards from './assets/pages/Cards.jsx'
 import SingleCard from './assets/pages/SingleCard.jsx'
+import CardsChildren from './assets/pages/CardsChildren.jsx'
 
 // Importing the Redux store from the configured store file
 import store from './redux/store.js'
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
     path: "cards/:cardID",
     element: <SingleCard/>,
   },
+  {
+    path: "cards-children",
+    element: <CardsChildren></CardsChildren>
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

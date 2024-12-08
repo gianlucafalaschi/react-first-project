@@ -1,4 +1,4 @@
-import NewNavbar from "../../components/NewNavabar";
+import NewNavbar from "../../components/NewNavbar";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom"; // Importing the useParams hook from React Router
 
@@ -23,10 +23,10 @@ function SingleCard(){
             <h1 className="text-3xl font-bold">{cities[0].title}</h1>
             <div className="flex flex-col p-4">
                 {cities[0].isVisited && (
-                    <span className="text-green-400">Visited</span>
+                    <span className="text-green-400"><i className="fa-solid fa-check"></i> Visited</span>
                 )}
                 {!cities[0].isVisited && (
-                    <span className="text-red-400">Not Visited</span>
+                    <span className="text-red-400"><i className="fa-solid fa-check"></i> Not Visited</span>
                 )}
             </div>
             
