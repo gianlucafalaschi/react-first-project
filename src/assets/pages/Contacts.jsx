@@ -1,6 +1,12 @@
 import NewNavbar from "../../components/NewNavbar";
+// Importing the custom hook useCounterTest from the hooks directory
+import useCounterTest from "../../hooks/useCounterTest";
+
 
 function Contacts() {
+    // Calling the custom hook useCounterTest to start logging random numbers to the console
+    useCounterTest();
+
     return(
         <>  
             <NewNavbar></NewNavbar>
